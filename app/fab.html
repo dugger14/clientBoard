@@ -1,0 +1,53 @@
+<!-- Import RobotoDraft -->
+<link href='//fonts.googleapis.com/css?family=RobotoDraft:regular,bold,italic,thin,light,bolditalic,black,medium&lang=en' rel='stylesheet' type='text/css'>
+<link href='styles/fab.css' rel='stylesheet'>
+<script type="text/javascript" src="scripts/fab.js"></script>
+<!-- This is the lite version of the Material Design floating action button. It is a regular Material button that I have hacked, so some code here may not actually be relevant for the FAB -->
+
+
+
+<!-- 
+This is an early preview of some prototyping on a light version of Material Design buttons for Web Starter Kit
+ 
+I'm trying to preserve accessibility as much as possible. This comes at the cost of the native element `outline` not being removed . This is fine for a lot of cases, but means I've temporarily avoided raised shadows on active state for the `raised-button` class. We'll get this back in place eventually.
+-->
+
+<h1>Web Starter Kit</h1>
+<h2>Material Design buttons</h2>
+<h4>paper-button paper-floating-action-button</h4>
+<button class="paper-button paper-floating-action-button">+
+  <div class="ripple"></div>
+</button>
+<button class="paper-button paper-floating-action-button">♥
+  <div class="ripple"></div>
+</button>
+
+<h4>purple</h4>
+<button class="paper-button paper-floating-action-button purple">♥
+  <div class="ripple"></div>
+</button>
+
+<h4>small</h4>
+<button class="paper-button paper-floating-action-button small">+
+  <div class="ripple"></div>
+</button>
+
+<h4>custom ripple color</h4>
+<button class="paper-button paper-floating-action-button">+
+  <div class="ripple custom-ripple"></div>
+</button>
+
+<h4>Overlaying a card</h4>
+<div class="card paper-shadow-top-z-4" style="position: relative;">
+  A Card
+  <button class="paper-button paper-floating-action-button" style="position: absolute; bottom: -5px; right: -5px;">+
+    <div class="ripple"></div>
+  </button>
+</div>
+
+<!-- 
+Tested in:
+Safari 7
+Chrome 37 beta
+Firefox.stable
+-->

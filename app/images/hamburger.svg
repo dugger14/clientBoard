@@ -1,0 +1,15 @@
+<!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="z" fill="none"/><path d="M2 6h20v3h-20zM2 11h20v3h-20zM2 16h20v3h-20z"/></svg>
+-->
+<svg version="1.1" id="Calque_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="90.1px" height="78.5px" viewBox="0 0 90.1 78.5" style="enable-background:new 0 0 90.1 78.5;" xml:space="preserve">
+<style type="text/css">
+<![CDATA[
+	.st0{fill:#FFFFFF;}
+	.st1{fill:#092c54;}
+]]>
+</style>
+<path class="st1" d="M90.1,66.5c0,6.6-5.4,12-12,12H12c-6.6,0-12-5.4-12-12V12C0,5.4,5.4,0,12,0h66.1c6.6,0,12,5.4,12,12V66.5z"/>
+<rect x="22.4" y="23.6" class="st0" width="45" height="5"/>
+<rect x="22.4" y="36.8" class="st0" width="45" height="5"/>
+<rect x="22.6" y="50.3" class="st0" width="45" height="5"/>
+</svg>
