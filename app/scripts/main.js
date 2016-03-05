@@ -16,6 +16,31 @@
  *  limitations under the License
  *
  */
+ $(document).ready(function() {
+   $("#activitiesLink").click(displayActivities);
+   $("#groupLink").click(displayByGroup);
+   $("#contactLink").click(displayByContact);
+ });  
+
+function displayActivities() {
+    $("#activities").show();
+    $("#byGroup").hide();
+    $("#byContact").hide();
+} 
+ 
+function displayByGroup() {
+  $("#activities").hide();
+  $("#byGroup").show();
+  $("#byContact").hide();
+} 
+ 
+function displayByContact() {
+    $("#activities").hide();
+    $("#byGroup").hide();
+    $("#byContact").show();
+}
+
+ 
 (function () {
   'use strict';
 
