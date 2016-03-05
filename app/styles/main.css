@@ -329,6 +329,10 @@ main {
     min-height: initial;
   }
 
+.mdl-mega-footer {
+  padding-left:130px;
+}
+
   body {
     overflow-y: scroll;
   }

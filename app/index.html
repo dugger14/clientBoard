@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="">
+<html lang="" ng-app="activitiesApp">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,8 +25,10 @@
     <link rel="canonical" href="http://www.example.com/">
     -->
     <link rel="stylesheet" type="text/css" media="screen" href="//cdn.muicss.com/mui-0.4.6/css/mui.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
     <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
-    <script src="//cdn.muicss.com/mui-0.4.6/js/mui.js"></script>
+    <script src="//cdn.muicss.com/mui-0.4.6/js/mui.js"></script> 
+    <script src="scripts/app.js"></script>
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.1.1/material.deep_purple-pink.min.css">
@@ -80,30 +82,12 @@
     <main>
       <div id="activities" class="section">
         <h2>All Activities</h2>
-        <div class="card paper-shadow-top-z-1">
-            <i style="float:right;" class="material-icons">store</i>
-          <div class="activityDescription">Client lunch, discussed project Alpha.</div>
-          <div class="activityMeta">Today - Paul Andersen with Amy Parson</div>
-        </div>
-        <div class="card paper-shadow-top-z-1">
-            <i style="float:right;" class="material-icons">games</i>
-          <div class="activityDescription">Knicks game, discussed new credit issuance.</div>
-          <div class="activityMeta">Tuesday Feb 23 - Craig Miller with James Martin</div>
-        </div>
-        <div class="card paper-shadow-top-z-1">
-            <i style="float:right;" class="material-icons">phone</i>
-          <div class="activityDescription">Conference call, introduced to new project lead.</div>
-          <div class="activityMeta">Monday Feb 22 - Craig Miller with Susan Harman</div>
-        </div>
-        <div class="card paper-shadow-top-z-1">
-            <i style="float:right;" class="material-icons">store</i>
-          <div class="activityDescription">Client dinner, quarterly status followup.</div>
-          <div class="activityMeta">Thursday Feb 18 - Craig Miller with James Martin</div>
-        </div>
-        <div class="card paper-shadow-top-z-1">
-            <i style="float:right;" class="material-icons">business</i>
-          <div class="activityDescription">Client on-site visit, new securities deal.</div>
-          <div class="activityMeta">Tuesday Feb 16 - Paul Andersen with Anne Cantor.</div>
+        <div ng-controller="activitiesController" class="aContainer">
+          <div ng-repeat="activity in activities track by $index" class="card paper-shadow-top-z-1">
+              <i style="float:right;" class="material-icons">{{activity.type}}</i>
+            <div class="activityDescription">{{activity.notes}}</div>
+            <div class="activityMeta">{{activity.date}} - {{activity.partner}} with {{activity.contact}}</div>
+          </div>
         </div>
       </div>
       <div id="byGroup" class="section" style="display:none;"> 
