@@ -21,7 +21,13 @@
   $("#groupLink").click(displayByGroup);
   $("#contactLink").click(displayByContact);
   $("#contactsLink").click(displayContacts);
+  $("#btn1").click(openForm);
  });  
+
+function openForm() {
+  $("#formContainer").show();
+  $("#form1").show();
+}
 
 function displayActivities() {
   $("#activities").show();
@@ -51,7 +57,7 @@ function displayContacts() {
   $("#contacts").show();
 }
 
- 
+
 (function () {
   'use strict';
 

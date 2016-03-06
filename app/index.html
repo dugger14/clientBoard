@@ -52,18 +52,6 @@
         <button class="paper-button paper-floating-action-button small" style="position: absolute; top: 39px; right: 15px;" id="btn1">+
           <div class="ripple">button 1</div>
         </button>
-            <div style="width:300px; padding:12px;" class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="btn1">
-              <form>
-                <legend>Add Activity</legend>
-                <div class="mui-textfield">
-                  <input type="text" placeholder="Today">
-                </div>
-                <div class="mui-textfield">
-                  <textarea placeholder="I did <what> with <whom>."></textarea>
-                </div>
-                <button type="submit" style="width:100px; height:40px;" class="mui-btn mui-btn--raised">Submit</button>
-              </form>
-            </div>
         </section>
       </div>
     </header>
@@ -80,10 +68,31 @@
       </ul>
     </nav>
 
-    <main>
+    <main ng-controller="activitiesController">
+      <div id="formContainer" style="width:300px; margin-top:60px; padding:12px; display:none;" class="card paper-shadow-top-z-1 mdl-menuzz mdl-js-menuzz mdl-menu--bottom-rightzz" for="btn1">
+        <form id="form1" style="display:none;">
+          <legend>Add Activity</legend>
+          <div class="mui-textfield">
+            <input type="text" placeholder="Today" ng-model="date">
+          </div>
+          <div class="mui-textfield">
+            <input type="text" placeholder="Contact name" ng-model="contact">
+          </div>
+          <div class="mui-textfield">
+            <input type="text" placeholder="Partner name" ng-model="partner">
+          </div>
+          <div class="mui-textfield">
+            <input type="text" placeholder="Category" ng-model="type">
+          </div>
+          <div class="mui-textfield">
+            <textarea placeholder="Notes" ng-model="notes"></textarea>
+          </div>
+          <input ng-click="addA()" type="submit" value="add" style="width:100px; height:40px;" class="mui-btn mui-btn--raised">
+        </form>
+      </div>
       <div id="activities" class="section">
         <h2>All Activities</h2>
-        <div ng-controller="activitiesController" class="aContainer">
+        <div class="aContainer">
           <div ng-repeat="activity in activities track by $index" class="card paper-shadow-top-z-1">
               <i style="float:right;" class="material-icons">{{activity.type}}</i>
             <div class="activityDescription">{{activity.notes}}</div>
