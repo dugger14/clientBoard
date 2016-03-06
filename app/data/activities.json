@@ -1,0 +1,26 @@
+[
+  {
+    "id" : "1",
+    "contact" : "James Martin",
+    "partner" : "Dave Timmons",
+    "notes" : "Went to the Knicks game and discussed project alpha.",
+    "date" : "Today",
+    "type" : "games"
+  },
+  {
+    "id" : "2",
+    "contact" : "Amy T. Johnson",
+    "partner" : "Tom B. Burrows",
+    "notes" : "Left message follow-up to weekly status.",
+    "date" : "Yesterday",
+    "type" : "message"
+  },
+  {
+    "id" : "3",
+    "contact" : "Clive Barry",
+    "partner" : "Janet S. Harrison",
+    "notes" : "Client lunch with mergers team.",
+    "date" : "March 5, 2016",
+    "type" : "store"
+  }
+]

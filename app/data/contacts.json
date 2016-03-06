@@ -1,0 +1,20 @@
+[
+  {
+    "name" : "Jane Hammond",
+    "group" : "Mergers",
+    "title" : "VP",
+    "phone" : "212-555-1232"
+  },
+  {
+    "name" : "Henry S. Kelly",
+    "group" : "Securities",
+    "title" : "General Manager",
+    "phone" : "212-555-1544"
+  },
+  {
+    "name" : "Mary T. Wilson",
+    "group" : "Mergers",
+    "title" : "AVP",
+    "phone" : "212-555-7732"
+  }
+]
