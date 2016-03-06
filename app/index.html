@@ -28,7 +28,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
     <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
     <script src="//cdn.muicss.com/mui-0.4.6/js/mui.js"></script> 
-    <script src="scripts/app.js"></script>
+    <script src="scripts/appExt.js"></script>
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.1.1/material.deep_purple-pink.min.css">
@@ -74,6 +74,7 @@
         <li><a id="activitiesLink">Activities</a></li>
         <li><a id="groupLink">By Group</a></li>
         <li><a id="contactLink">By Contact</a></li>
+        <li><a id="contactsLink">Contacts</a></li>
         <li><a href="#">Client News</a></li>
         <li><a href="#">Matters</a></li>
       </ul>
@@ -87,6 +88,16 @@
               <i style="float:right;" class="material-icons">{{activity.type}}</i>
             <div class="activityDescription">{{activity.notes}}</div>
             <div class="activityMeta">{{activity.date}} - {{activity.partner}} with {{activity.contact}}</div>
+          </div>
+        </div>
+      </div>
+      <div id="contacts" class="section" style="display:none;">
+        <h2>Contacts</h2>
+        <div ng-controller="contactsController" class="aContainer">
+          <div ng-repeat="contact in contacts track by $index" class="card paper-shadow-top-z-1">
+            <div class="contactGroup">{{contact.group}}</div>
+            <div class="activityDescription">{{contact.name}} ({{contact.title}})</div>
+            <div class="activityMeta">{{contact.phone}}</div>
           </div>
         </div>
       </div>

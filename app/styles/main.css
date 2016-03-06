@@ -29,7 +29,7 @@ body.open {
 }
 
 .section {
-  margin-bottom:100px;
+  margin-bottom:20px;
 }
 
 .section h2 {
@@ -52,6 +52,12 @@ body.open {
 .groupName h4 {
   margin:2px;
   padding:2px;
+}
+
+.contactGroup {
+  float:right;
+  padding:6px;
+  font-size:9pt;
 }
 
 .app-bar {
@@ -153,8 +159,8 @@ body.open {
 
   #perfmatters
   */
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
+/*  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;*/
 }
 
 .base, p, ul, ol {
@@ -240,7 +246,7 @@ main {
   margin: 0 auto;
   /* Height of the header */
   padding: 9px;
-  min-height: 100%;
+  /*min-height: 100%;*/
 }
 
 /** Larger Screens - desktops and tablets **/

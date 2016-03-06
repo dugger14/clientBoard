@@ -17,27 +17,38 @@
  *
  */
  $(document).ready(function() {
-   $("#activitiesLink").click(displayActivities);
-   $("#groupLink").click(displayByGroup);
-   $("#contactLink").click(displayByContact);
+  $("#activitiesLink").click(displayActivities);
+  $("#groupLink").click(displayByGroup);
+  $("#contactLink").click(displayByContact);
+  $("#contactsLink").click(displayContacts);
  });  
 
 function displayActivities() {
-    $("#activities").show();
-    $("#byGroup").hide();
-    $("#byContact").hide();
+  $("#activities").show();
+  $("#byGroup").hide();
+  $("#byContact").hide();
+  $("#contacts").hide();
 } 
  
 function displayByGroup() {
   $("#activities").hide();
   $("#byGroup").show();
   $("#byContact").hide();
+  $("#contacts").hide();
 } 
  
 function displayByContact() {
-    $("#activities").hide();
-    $("#byGroup").hide();
-    $("#byContact").show();
+  $("#activities").hide();
+  $("#byGroup").hide();
+  $("#byContact").show();
+  $("#contacts").hide();
+}
+
+function displayContacts() {
+  $("#activities").hide();
+  $("#byGroup").hide();
+  $("#byContact").hide();
+  $("#contacts").show();
 }
 
  
