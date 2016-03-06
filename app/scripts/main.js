@@ -21,8 +21,17 @@
   $("#groupLink").click(displayByGroup);
   $("#contactLink").click(displayByContact);
   $("#contactsLink").click(displayContacts);
+  $("#partnerLink").click(displayByPartner);
   $("#btn1").click(openForm);
+  $("#formCancel").click(cancel);
+  $('#datePicker').val(new Date().toDateInputValue());
  });  
+
+Date.prototype.toDateInputValue = (function() {
+    var local = new Date(this);
+    local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+    return local.toJSON().slice(0,10);
+});
 
 function openForm() {
   $("#formContainer").fadeIn();
@@ -32,11 +41,27 @@ function openForm() {
   $("#mask").css("z-index","4");
 }
 
+function cancel() {
+  $("#formContainer").hide();
+  $("#form1").hide();
+  $("#mask").css("background-color","");
+  $("#mask").css("z-index","0");
+}
+
 function displayActivities() {
   $("#activities").show();
   $("#byGroup").hide();
   $("#byContact").hide();
   $("#contacts").hide();
+  $("#byPartner").hide();
+} 
+
+function displayByPartner() {
+  $("#activities").hide();
+  $("#byGroup").hide();
+  $("#byContact").hide();
+  $("#contacts").hide();
+  $("#byPartner").show();
 } 
  
 function displayByGroup() {
@@ -44,6 +69,7 @@ function displayByGroup() {
   $("#byGroup").show();
   $("#byContact").hide();
   $("#contacts").hide();
+  $("#byPartner").hide();
 } 
  
 function displayByContact() {
@@ -51,6 +77,7 @@ function displayByContact() {
   $("#byGroup").hide();
   $("#byContact").show();
   $("#contacts").hide();
+  $("#byPartner").hide();
 }
 
 function displayContacts() {
@@ -58,6 +85,7 @@ function displayContacts() {
   $("#byGroup").hide();
   $("#byContact").hide();
   $("#contacts").show();
+  $("#byPartner").hide();
 }
 
 

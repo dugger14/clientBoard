@@ -66,6 +66,7 @@
         <li><a id="activitiesLink">Activities</a></li>
         <li><a id="groupLink">By Group</a></li>
         <li><a id="contactLink">By Contact</a></li>
+        <li><a id="partnerLink">By Partner</a></li>
         <li><a id="contactsLink">Contacts</a></li>
         <li><a href="#">Client News</a></li>
         <li><a href="#">Matters</a></li>
@@ -76,7 +77,8 @@
         <form id="form1" style="display:none;">
           <legend>Add Activity</legend>
           <div class="mui-textfield">
-            <input type="text" placeholder="Today" ng-model="date">
+            <!--<input type="date" ng-model="date" id="datePicker">-->
+            <input type="text" placeholder="Date" ng-model="date">
           </div>
           <div class="mui-textfield">
             <input type="text" placeholder="Contact name" ng-model="contact">
@@ -85,18 +87,19 @@
             <input type="text" placeholder="Partner name" ng-model="partner">
           </div>
           <div class="mui-textfield">
-            <input type="text" placeholder="Category" ng-model="type">
-          </div>
-          <div class="mui-textfield">
             <textarea placeholder="Notes" ng-model="notes"></textarea>
           </div>
-          <input ng-click="addA()" type="submit" value="add" style="width:100px; height:40px;" class="mui-btn mui-btn--raised">
+          <div class="mui-textfield">
+            <input type="text" placeholder="Category" ng-model="type">
+          </div>
+          <input ng-click="addA()" type="submit" value="Submit" style="width:100px; height:40px;" class="mui-btn mui-btn--raised">
+          <a href="#" id="formCancel" class="activityMeta" style="float:right; margin:15px 6px 0 0;" ng-click="cancel()">Cancel</a>
         </form>
       </div>
       <div id="activities" class="section">
         <h2>All Activities</h2>
         <div class="aContainer">
-          <div ng-repeat="activity in activities track by $index" class="card paper-shadow-top-z-1">
+          <div ng-repeat="activity in activities | orderBy:'-$id'" class="card paper-shadow-top-z-1">
               <i style="float:right;" class="material-icons">{{activity.type}}</i>
               <div class="activityMeta" style="clear:right; float:right;">
                  <a href="#" ng-click="activities.$remove(activity)">Delete</a>
@@ -106,123 +109,53 @@
           </div>
         </div>
       </div>
-      <div id="contacts" class="section" style="display:none;">
-        <h2>Contacts</h2>
-        <div ng-controller="contactsController" class="aContainer">
-          <div ng-repeat="contact in contacts track by $index" class="card paper-shadow-top-z-1">
-            <div class="contactGroup">{{contact.group}}</div>
-            <div class="activityDescription">{{contact.name}} ({{contact.title}})</div>
-            <div class="activityMeta">{{contact.phone}}</div>
+      <div id="byPartner" class="section" style="display:none;"> 
+        <h2>Activities by Partner</h2>
+        <div class="aContainer">
+          <div ng-repeat="activity in activities | orderBy:'partner'" class="card paper-shadow-top-z-1">
+              <i style="float:right;" class="material-icons">{{activity.type}}</i>
+              <div class="activityMeta" style="clear:right; float:right;">
+                 <a href="#" ng-click="activities.$remove(activity)">Delete</a>
+              </div>
+            <div class="activityDescription">{{activity.notes}}</div>
+            <div class="activityMeta">{{activity.date}} - {{activity.partner}} with {{activity.contact}}</div>
           </div>
         </div>
       </div>
       <div id="byGroup" class="section" style="display:none;"> 
         <h2>Activities by Group</h2>
-        <div class="groupName">
-            <button style="float:right;" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="btn3">
-              <i class="material-icons">more_vert</i>
-            </button>
-            <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="btn3">
-              <li class="mdl-menu__item">Contacts</li>
-              <li class="mdl-menu__item">Details</li>
-              <li class="mdl-menu__item">Matters</li>
-              <li class="mdl-menu__item">Lexis News</li>
-            </ul>
-            <h4>Mergers</h4>
-        </div>
-        <div class="groupName">
-            <button style="float:right;" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="btn4">
-              <i class="material-icons">more_vert</i>
-            </button>
-            <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="btn4">
-              <li class="mdl-menu__item">Lorem</li>
-              <li class="mdl-menu__item" disabled>Ipsum</li>
-              <li class="mdl-menu__item">Dolor</li>
-            </ul>
-            <h4>Credit</h4>
-        </div>
-          <div class="card paper-shadow-top-z-1">
-            <i style="float:right;" class="material-icons">store</i>
-            <div class="activityDescription">Client lunch, discussed project Alpha.</div>
-            <div class="activityMeta">Today - Paul Andersen with Amy Parson</div>
+        <div class="aContainer">
+          <div ng-repeat="activity in activities | orderBy:'contact'" class="card paper-shadow-top-z-1">
+              <i style="float:right;" class="material-icons">{{activity.type}}</i>
+              <div class="activityMeta" style="clear:right; float:right;">
+                 <a href="#" ng-click="activities.$remove(activity)">Delete</a>
+              </div>
+            <div class="activityDescription">{{activity.notes}}</div>
+            <div class="activityMeta">{{activity.date}} - {{activity.partner}} with {{activity.contact}}</div>
           </div>
-          <div class="card paper-shadow-top-z-1">
-            <i style="float:right;" class="material-icons">games</i>
-            <div class="activityDescription">Knicks game, discussed new credit issuance.</div>
-            <div class="activityMeta">Tuesday Feb 23 - Craig Miller with James Martin</div>
-          </div>
-          <div class="card paper-shadow-top-z-1">
-            <i style="float:right;" class="material-icons">message</i>
-            <div class="activityDescription">Left message re: project Bravo.</div>
-            <div class="activityMeta">Monday Feb 22 - Craig Miller with Anne Jamison.</div>
-          </div>
-        <div class="groupName">
-            <button style="float:right;" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="btn5">
-              <i class="material-icons">more_vert</i>
-            </button>
-            <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="btn5">
-              <li class="mdl-menu__item">Lorem</li>
-              <li class="mdl-menu__item" disabled>Ipsum</li>
-              <li class="mdl-menu__item">Dolor</li>
-            </ul>
-            <h4>Securities</h4>
-        </div>
-        <div class="groupName">
-            <button style="float:right;" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="btn6">
-              <i class="material-icons">more_vert</i>
-            </button>
-            <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="btn6">
-              <li class="mdl-menu__item">Lorem</li>
-              <li class="mdl-menu__item" disabled>Ipsum</li>
-              <li class="mdl-menu__item">Dolor</li>
-            </ul>
-            <h4>Equity</h4>
         </div>
       </div>
       <div id="byContact" class="section" style="display:none;"> 
         <h2>Activities by Contact</h2>
-        <div class="groupName">
-            <button style="float:right;" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="btn7">
-              <i class="material-icons">more_vert</i>
-            </button>
-            <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="btn7">
-              <li class="mdl-menu__item">Lorem</li>
-              <li class="mdl-menu__item" disabled>Ipsum</li>
-              <li class="mdl-menu__item">Dolor</li>
-            </ul>
-            <h4>James Martin</h4>
-        </div>
-          <div class="card paper-shadow-top-z-1">
-            <i style="float:right;" class="material-icons">phone</i>
-            <div class="activityDescription">Conference call, discussed project Tomcat.</div>
-            <div class="activityMeta">Today - Paul Andersen with James Martin</div>
+        <div class="aContainer">
+          <div ng-repeat="activity in activities | orderBy:'contact'" class="card paper-shadow-top-z-1">
+              <i style="float:right;" class="material-icons">{{activity.type}}</i>
+              <div class="activityMeta" style="clear:right; float:right;">
+                 <a href="#" ng-click="activities.$remove(activity)">Delete</a>
+              </div>
+            <div class="activityDescription">{{activity.notes}}</div>
+            <div class="activityMeta">{{activity.date}} - {{activity.partner}} with {{activity.contact}}</div>
           </div>
-          <div class="card paper-shadow-top-z-1">
-            <i style="float:right;" class="material-icons">store</i>
-            <div class="activityDescription">Client dinner, discussed new credit issuance.</div>
-            <div class="activityMeta">Yesterday - Craig Miller with James Martin</div>
-          </div>
-        <div class="groupName">
-            <button style="float:right;" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="btn8">
-              <i class="material-icons">more_vert</i>
-            </button>
-            <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="btn8">
-              <li class="mdl-menu__item">Lorem</li>
-              <li class="mdl-menu__item" disabled>Ipsum</li>
-              <li class="mdl-menu__item">Dolor</li>
-            </ul>
-            <h4>Jason Harris</h4>
         </div>
-        <div class="groupName">
-            <button style="float:right;" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="btn9">
-              <i class="material-icons">more_vert</i>
-            </button>
-            <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="btn9">
-              <li class="mdl-menu__item">Lorem</li>
-              <li class="mdl-menu__item" disabled>Ipsum</li>
-              <li class="mdl-menu__item">Dolor</li>
-            </ul>
-            <h4>Susan Thomas</h4>
+      </div>
+      <div id="contacts" ng-controller="contactsController" class="section" style="display:none;">
+        <h2>Contacts</h2>
+        <div class="aContainer">
+          <div ng-repeat="contact in contacts track by $index" class="card paper-shadow-top-z-1">
+            <div class="contactGroup">{{contact.group}}</div>
+            <div class="activityDescription">{{contact.name}} ({{contact.title}})</div>
+            <div class="activityMeta">{{contact.phone}}</div>
+          </div>
         </div>
       </div>
        </main>

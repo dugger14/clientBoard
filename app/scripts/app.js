@@ -1,7 +1,7 @@
 var activitiesApp  =  angular.module('activitiesApp', ["firebase"]);
 
 activitiesApp.controller("activitiesController", function($scope, $firebaseArray) {
-  var ref = new Firebase("https://f0gccg5jh1t14.firebaseio-demo.com/");
+  var ref = new Firebase("https://torrid-torch-9308.firebaseio.com/");
   
   // create a synchronized array
   $scope.activities = $firebaseArray(ref);
@@ -21,18 +21,21 @@ activitiesApp.controller("activitiesController", function($scope, $firebaseArray
       $("#mask").css("background-color","");
       $("#mask").css("z-index","0");
       window.scrollTo(0,0);
-      $scope.contact = '';
       $scope.partner = '';
+      $scope.contact = '';
       $scope.notes = '';
-      $scope.date = '';
       $scope.type = '';
   };
 
   
 });
 
-
-
+activitiesApp.controller('contactsLookupController', function($scope, $http){
+    $http.get('data/contacts.json').success(function (response){
+        $scope.contactList = response;
+    });
+});
+    
 activitiesApp.controller('contactsController', function($scope, $http){
     $http.get('data/contacts.json').success(function (response){
         $scope.contacts = response;
