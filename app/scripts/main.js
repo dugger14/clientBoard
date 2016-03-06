@@ -27,7 +27,7 @@
 function openForm() {
   $("#formContainer").fadeIn();
   $("#form1").fadeIn();
-  $("#mask").fadeTo("slow",.5);
+  $("#mask").fadeTo("slow",0.5);
   $("#mask").css("background-color","#ccc");
   $("#mask").css("z-index","4");
 }
