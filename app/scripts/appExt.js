@@ -33,6 +33,8 @@ activitiesApp.controller('activitiesController', function($scope, $http){
         }
       };
    
+var myDataRef = new Firebase('https://f0gccg5jh1t.firebaseio-demo.com/');
+
   });
     
   console.log($scope);
