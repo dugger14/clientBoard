@@ -25,8 +25,11 @@
  });  
 
 function openForm() {
-  $("#formContainer").show();
-  $("#form1").show();
+  $("#formContainer").fadeIn();
+  $("#form1").fadeIn();
+  $("#mask").fadeTo("slow",.5);
+  $("#mask").css("background-color","#ccc");
+  $("#mask").css("z-index","4");
 }
 
 function displayActivities() {

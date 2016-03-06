@@ -55,7 +55,7 @@
         </section>
       </div>
     </header>
-
+    <div id="mask"></div>
     <nav class="navdrawer-container promote-layer">
       <h4>Navigation</h4>
       <ul>
@@ -69,7 +69,7 @@
     </nav>
 
     <main ng-controller="activitiesController">
-      <div id="formContainer" style="width:300px; margin-top:60px; padding:12px; display:none;" class="card paper-shadow-top-z-1 mdl-menuzz mdl-js-menuzz mdl-menu--bottom-rightzz" for="btn1">
+      <div id="formContainer" style="display:none;" class="card paper-shadow-top-z-1 mdl-menuzz mdl-js-menuzz mdl-menu--bottom-rightzz" for="btn1">
         <form id="form1" style="display:none;">
           <legend>Add Activity</legend>
           <div class="mui-textfield">
@@ -95,6 +95,9 @@
         <div class="aContainer">
           <div ng-repeat="activity in activities track by $index" class="card paper-shadow-top-z-1">
               <i style="float:right;" class="material-icons">{{activity.type}}</i>
+              <div class="activityMeta" style="clear:right; float:right;">
+                <a href="#" ng-click="deleteA($index)">Delete</a>
+              </div>
             <div class="activityDescription">{{activity.notes}}</div>
             <div class="activityMeta">{{activity.date}} - {{activity.partner}} with {{activity.contact}}</div>
           </div>

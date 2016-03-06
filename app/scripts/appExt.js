@@ -14,14 +14,24 @@ activitiesApp.controller('activitiesController', function($scope, $http){
         date : $scope.date,
         type : $scope.type
       });
-      $("#formContainer").slideUp();
-      $("#form1").slideUp();
+      $("#formContainer").fadeOut();
+      $("#form1").fadeOut();
+      $("#mask").css("background-color","");
+      $("#mask").css("z-index","0");
+      window.scrollTo(0,0);
       $scope.contact = '';
       $scope.partner = '';
       $scope.notes = '';
       $scope.date = '';
       $scope.type = '';
     };
+    
+      $scope.deleteA = function(id) {
+        var result = confirm("Are you sure?");
+        if (result===true) {
+        $scope.activities.splice(id, 1);
+        }
+      };
    
   });
     

@@ -44,7 +44,7 @@ Need to add z-index to make the FAB go over other elements
   display: block;
   width: 100%;
   height: 100%;
-  font-family: 'Roboto';
+  font-family: Helvetica;
   font-size: 1em;
   color: #000;
   text-transform: uppercase;
@@ -95,7 +95,7 @@ Need to add z-index to make the FAB go over other elements
 
 button.paper-button {
   border: 0;
-  font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
+  font-family: Helvetica, Arial;
   font-size: 1em;
   line-height: 25px;
   background-color: #fff;
