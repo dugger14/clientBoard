@@ -272,7 +272,7 @@ main {
   margin: 0 auto;
   /* Height of the header */
   padding: 9px;
-  /*min-height: 100%;*/
+  min-height: 100%;
 }
 
 /** Larger Screens - desktops and tablets **/
