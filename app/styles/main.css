@@ -33,6 +33,7 @@ body.open {
   top:0; left:0; 
   width:100%; 
   height:100%;
+  z-index:-1;
 }
 
 .section {
@@ -119,9 +120,9 @@ body.open {
   -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  font-size: 2em;
+  font-size: 1.5em;
   line-height: 60px;
-  margin: 0 16px;
+  margin: 0 9px;
   padding: 0;
   color: #fefefe;
   float: none;
@@ -276,6 +277,12 @@ main {
 
 /** Larger Screens - desktops and tablets **/
 @media all and (min-width: 990px) {
+  
+  .mdh-expandable-search,
+  .mdh-expandable-search form {
+    width:436px; 
+  }
+  
   .section h2 {
   padding-top:20px;
   }
@@ -297,7 +304,7 @@ main {
 
   .app-bar-container {
     display: block;
-    height: 130px;
+    height: 80px;
     max-width: 864px;
     padding: 0 16px;
     box-sizing: border-box;
@@ -308,7 +315,7 @@ main {
     float: left;
     margin: 0;
     padding: 0;
-    line-height: 130px;
+    line-height: 80px;
     font-size: 46px;
   }
 

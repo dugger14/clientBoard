@@ -50,6 +50,22 @@
       <div class="app-bar-container">
         <button class="menu"><img src="images/hamburger.svg" alt="Menu"></button>
         <h1 class="logo">Client Board</h1>
+
+        <!-- Search -->
+      <div class="mdh-expandable-search mdl-cell--hide-phone">
+        <i class="material-icons">search</i>
+        <form action="#">
+          <input type="text" placeholder="Search" size="1" ng-model="search">
+        </form>
+      </div>
+
+      <!-- Displayed on mobile -->
+      <div class="mdl-layout-spacer mdl-cell--hide-tablet mdl-cell--hide-desktop"></div>
+      <!-- Search button -->
+      <button class="mdh-toggle-search mdl-button mdl-js-button mdl-button--icon mdl-cell--hide-tablet mdl-cell--hide-desktop">
+        <i class="material-icons">search</i>
+      </button>
+
         <section class="app-bar-actions" style="position: relative; z-index:3;">
         <!-- Put App Bar Buttons Here -->
 
@@ -99,7 +115,7 @@
       <div id="activities" class="section">
         <h2>All Activities</h2>
         <div class="aContainer">
-          <div ng-repeat="activity in activities | orderBy:'-$id'" class="card paper-shadow-top-z-1">
+          <div ng-repeat="activity in activities | orderBy:'-$id' | filter:search" class="card paper-shadow-top-z-1">
               <i style="float:right;" class="material-icons">{{activity.type}}</i>
               <div class="activityMeta" style="clear:right; float:right;">
                  <a href="#" ng-click="activities.$remove(activity)">Delete</a>
