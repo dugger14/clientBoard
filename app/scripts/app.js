@@ -1,7 +1,7 @@
 var activitiesApp  =  angular.module('activitiesApp', ["firebase"]);
 
 activitiesApp.controller("activitiesController", function($scope, $firebaseArray) {
-  var ref = new Firebase("https://torrid-torch-9308.firebaseio.com/");
+  var ref = new Firebase("https://torrid-torch-930814.firebaseio.com/");
   
   // create a synchronized array
   $scope.activities = $firebaseArray(ref);
