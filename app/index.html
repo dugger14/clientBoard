@@ -93,20 +93,19 @@
         <form id="form1" style="display:none;">
           <legend>Add Activity</legend>
           <div class="mui-textfield">
-            <!--<input type="date" ng-model="date" id="datePicker">-->
-            <input type="text" placeholder="Date" ng-model="date">
+            <input type="text" name="date" placeholder="Date" ng-model="newActivity.date">
           </div>
           <div class="mui-textfield">
-            <input type="text" placeholder="Contact name" ng-model="contact">
+            <input type="text" name="contact" placeholder="Contact name" ng-model="newActivity.contact">
           </div>
           <div class="mui-textfield">
-            <input type="text" placeholder="Partner name" ng-model="partner">
+            <input type="text" name="partner" placeholder="Partner name" ng-model="newActivity.partner">
           </div>
           <div class="mui-textfield">
-            <textarea placeholder="Notes" ng-model="notes"></textarea>
+            <textarea name="notes" placeholder="Notes" ng-model="newActivity.notes"></textarea>
           </div>
           <div class="mui-textfield">
-            <input type="text" placeholder="Category" ng-model="type">
+            <input type="text" name="type" placeholder="Category" ng-model="newActivity.type">
           </div>
           <input ng-click="addA()" type="submit" value="Submit" style="width:100px; height:40px;" class="mui-btn mui-btn--raised">
           <a href="#" id="formCancel" class="activityMeta" style="float:right; margin:15px 6px 0 0;" ng-click="cancel()">Cancel</a>
