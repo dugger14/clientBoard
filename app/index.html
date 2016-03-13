@@ -92,21 +92,35 @@
       <div id="formContainer" style="display:none;" class="card paper-shadow-top-z-1 mdl-menuzz mdl-js-menuzz mdl-menu--bottom-rightzz" for="btn1">
         <form id="form1" style="display:none;">
           <legend>Add Activity</legend>
+          
           <div class="mui-textfield">
-            <input type="text" name="date" placeholder="Date" ng-model="newActivity.date">
+            <input type="date" ng-model="newActivity.date">
           </div>
-          <div class="mui-textfield">
-            <input type="text" name="contact" placeholder="Contact name" ng-model="newActivity.contact">
+          
+          <div class="mui-select" ng-controller="contactsLookupController">
+            <div style="color:#bbb;">Contact</div>
+            <select ng-model="newActivity.contactName">
+              <option ng-repeat="contact in contactList" value="{{contact.name}}">{{contact.name}}</option>
+           </select>
           </div>
+          
           <div class="mui-textfield">
             <input type="text" name="partner" placeholder="Partner name" ng-model="newActivity.partner">
           </div>
+          
           <div class="mui-textfield">
             <textarea name="notes" placeholder="Notes" ng-model="newActivity.notes"></textarea>
           </div>
-          <div class="mui-textfield">
-            <input type="text" name="type" placeholder="Category" ng-model="newActivity.type">
+          
+          <div class="mui-select">
+            <div style="color:#bbb;">Category</div>
+            <select ng-model="newActivity.type">
+              <option value="phone">Phone call</option>
+              <option value="message">Left message</option>
+              <option value="store">Meal</option>
+            </select>
           </div>
+          
           <input ng-click="addA()" type="submit" value="Submit" style="width:100px; height:40px;" class="mui-btn mui-btn--raised">
           <a href="#" id="formCancel" class="activityMeta" style="float:right; margin:15px 6px 0 0;" ng-click="cancel()">Cancel</a>
         </form>
@@ -120,7 +134,7 @@
                  <a href="#" ng-click="activities.$remove(activity)">Delete</a>
               </div>
             <div class="activityDescription">{{activity.notes}}</div>
-            <div class="activityMeta">{{activity.date}} - {{activity.partner}} with {{activity.contact}}</div>
+            <div class="activityMeta">{{activity.date | date:'shortDate'}} - {{activity.partner}} with {{activity.contact}}</div>
           </div>
         </div>
       </div>
