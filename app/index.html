@@ -31,7 +31,7 @@
     <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.1.1/material.deep_purple-pink.min.css">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.2/material.indigo-deep_orange.min.css">
     <!-- build:css styles/components/main.min.css -->
     <link rel="stylesheet" href="styles/h5bp.css">
     <link rel="stylesheet" href="styles/components/components.css">
@@ -92,37 +92,40 @@
       <div id="formContainer" style="display:none;" class="card paper-shadow-top-z-1 mdl-menuzz mdl-js-menuzz mdl-menu--bottom-rightzz" for="btn1">
         <form id="form1" style="display:none;">
           <legend>Add Activity</legend>
-          
-          <div class="mui-textfield">
-            <input type="date" ng-model="newActivity.date">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="date" id="date1" ng-model="newActivity.date">
+            <label class="mdl-textfield__label" for="date1"></label>
           </div>
           
-          <div class="mui-select" ng-controller="contactsLookupController">
-            <div style="color:#bbb;">Contact</div>
-            <select ng-model="newActivity.contactName">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" ng-controller="contactsLookupController">
+            <select class="mdl-textfield__input" id="contact" ng-model="newActivity.contactName">
               <option ng-repeat="contact in contactList" value="{{contact.name}}">{{contact.name}}</option>
-           </select>
+           </select>            
+           <label class="mdl-textfield__label" for="contact">Contact</label>
+          </div>
+                    
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="partner" ng-model="newActivity.partner">
+            <label class="mdl-textfield__label" for="partner">Partner</label>
           </div>
           
-          <div class="mui-textfield">
-            <input type="text" name="partner" placeholder="Partner name" ng-model="newActivity.partner">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <textarea class="mdl-textfield__input" id="notes" ng-model="newActivity.notes"></textarea>
+            <label class="mdl-textfield__label" for="notes">Notes</label>
           </div>
           
-          <div class="mui-textfield">
-            <textarea name="notes" placeholder="Notes" ng-model="newActivity.notes"></textarea>
-          </div>
-          
-          <div class="mui-select">
-            <div style="color:#bbb;">Category</div>
-            <select ng-model="newActivity.type">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <select class="mdl-textfield__input" id="type" ng-model="newActivity.type">
               <option value="phone">Phone call</option>
               <option value="message">Left message</option>
               <option value="store">Meal</option>
             </select>
+            <label class="mdl-textfield__label" for="type">Type</label>
           </div>
           
           <input ng-click="addA()" type="submit" value="Submit" style="width:100px; height:40px;" class="mui-btn mui-btn--raised">
           <a href="#" id="formCancel" class="activityMeta" style="float:right; margin:15px 6px 0 0;" ng-click="cancel()">Cancel</a>
+        </div>
         </form>
       </div>
       <div id="activities" class="section">

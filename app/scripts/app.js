@@ -22,10 +22,11 @@ activitiesApp.controller("activitiesController", function($scope, $firebaseArray
       $("#mask").css("background-color","");
       $("#mask").css("z-index","0");
       window.scrollTo(0,0);
-      $scope.partner = '';
-      $scope.contact = '';
-      $scope.notes = '';
-      $scope.type = '';
+      $scope.newActivity.contactName = '';
+      $scope.newActivity.partner = '';
+      $scope.newActivity.date = '';
+      $scope.newActivity.notes = '';
+      $scope.newActivity.type = '';
   };
   
 });
