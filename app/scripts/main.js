@@ -4,6 +4,7 @@ $(document).ready(function() {
   $("#contactLink").click(displayByContact);
   $("#contactsLink").click(displayContacts);
   $("#partnerLink").click(displayByPartner);
+  $("#partnersLink").click(displayPartners);
   $("#btn1").click(openForm);
   $("#formCancel").click(cancel);
   $('#datePicker').val(new Date().toDateInputValue());
@@ -18,7 +19,7 @@ Date.prototype.toDateInputValue = (function() {
 function openForm() {
   $("#formContainer").fadeIn();
   $("#form1").fadeIn();
-  $("#mask").fadeTo("slow",0.5);
+  $("#mask").fadeTo("slow",0.7);
   $("#mask").css("background-color","#ccc");
   $("#mask").css("z-index","4");
 }
@@ -36,6 +37,7 @@ function displayActivities() {
   $("#byContact").hide();
   $("#contacts").hide();
   $("#byPartner").hide();
+  $("#partners").hide();
 } 
 
 function displayByPartner() {
@@ -44,6 +46,7 @@ function displayByPartner() {
   $("#byContact").hide();
   $("#contacts").hide();
   $("#byPartner").show();
+  $("#partners").hide();
 } 
  
 function displayByGroup() {
@@ -52,6 +55,7 @@ function displayByGroup() {
   $("#byContact").hide();
   $("#contacts").hide();
   $("#byPartner").hide();
+  $("#partners").hide();
 } 
  
 function displayByContact() {
@@ -60,6 +64,7 @@ function displayByContact() {
   $("#byContact").show();
   $("#contacts").hide();
   $("#byPartner").hide();
+  $("#partners").hide();
 }
 
 function displayContacts() {
@@ -67,6 +72,16 @@ function displayContacts() {
   $("#byGroup").hide();
   $("#byContact").hide();
   $("#contacts").show();
+  $("#byPartner").hide();
+  $("#partners").hide();
+}
+
+function displayPartners() {
+  $("#activities").hide();
+  $("#byGroup").hide();
+  $("#byContact").hide();
+  $("#contacts").hide();
+  $("#partners").show();
   $("#byPartner").hide();
 }
 

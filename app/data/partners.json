@@ -1,0 +1,38 @@
+[
+  {
+    "name" : "James M. Martin",
+    "group" : "Mergers",
+    "title" : "Partner",
+    "phone" : "212-555-1232"
+  },
+  {
+    "name" : "Thomas N. Johnson",
+    "group" : "Banking",
+    "title" : "Partner",
+    "phone" : "212-555-1644"
+  },
+  {
+    "name" : "Sandra M. Gibbons",
+    "group" : "Securities",
+    "title" : "Partner",
+    "phone" : "212-555-1544"
+  },
+  {
+    "name" : "Robert R. Lewis",
+    "group" : "Credit",
+    "title" : "Partner",
+    "phone" : "212-555-6544"
+  },
+  {
+    "name" : "Warren Morris",
+    "group" : "Securities",
+    "title" : "Partner",
+    "phone" : "212-555-7744"
+  },
+  {
+    "name" : "Raymond Jacobs",
+    "group" : "Mergers",
+    "title" : "Partner",
+    "phone" : "212-555-7732"
+  }
+]

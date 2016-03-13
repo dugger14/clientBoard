@@ -13,7 +13,7 @@
     <!-- Add to homescreen for Safari on iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Web Starter Kit">
+    <meta name="apple-mobile-web-app-title" content="Client Board">
     <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-precomposed.png">
 
     <!-- Tile icon for Win8 (144x144 + tile color) -->
@@ -25,9 +25,20 @@
     <link rel="canonical" href="http://www.example.com/">
     -->
     <link rel="stylesheet" type="text/css" media="screen" href="//cdn.muicss.com/mui-0.4.6/css/mui.css" />
+    
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+    
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-animate.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-aria.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-messages.min.js"></script>
 
-    <script src="//cdn.muicss.com/mui-0.4.6/js/mui.js"></script>
+    <script src="//cdn.muicss.com/mui-0.4.6/js/mui.js"></script>  
+    
+    <!-- Angular Material Library -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+    
+    
     <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -52,7 +63,7 @@
         <h1 class="logo">Client Board</h1>
 
         <!-- Search -->
-      <div class="mdh-expandable-search mdl-cell--hide-phone">
+      <div class="mdh-expandable-search">
         <i class="material-icons">search</i>
         <form action="#">
           <input type="text" placeholder="Search" size="1" ng-model="search">
@@ -72,6 +83,10 @@
         <button class="paper-button paper-floating-action-button small" style="position: absolute; top: 39px; right: 15px;" id="btn1">+
           <div class="ripple">button 1</div>
         </button>
+        
+        <!--<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" id="btn1">
+          <i class="material-icons">add</i>
+        </button>-->
         </section>
       </div>
     </header>
@@ -79,35 +94,44 @@
     <nav class="navdrawer-container promote-layer">
       <h4>Navigation</h4>
       <ul>
-        <li><a id="activitiesLink">Activities</a></li>
+        <li><a id="activitiesLink">Activities</a></li><!--
         <li><a id="groupLink">By Group</a></li>
         <li><a id="contactLink">By Contact</a></li>
-        <li><a id="partnerLink">By Partner</a></li>
+        <li><a id="partnerLink">By Partner</a></li>-->
         <li><a id="contactsLink">Contacts</a></li>
-        <li><a href="#">Client News</a></li>
-        <li><a href="#">Matters</a></li>
+        <li><a id="partnersLink">Partners</a></li>
+       <!-- <li><a href="#">Client News</a></li>
+        <li><a href="#">Matters</a></li>-->
       </ul>
     </nav>
     <main ng-controller="activitiesController">
-      <div id="formContainer" style="display:none;" class="card paper-shadow-top-z-1 mdl-menuzz mdl-js-menuzz mdl-menu--bottom-rightzz" for="btn1">
+      <div id="formContainer" style="display:none;" class="card paper-shadow-top-z-1" for="btn1">
         <form id="form1" style="display:none;">
-          <legend>Add Activity</legend>
+          <legend style="margin-bottom:0;">Add Activity</legend>
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="date" id="date1" ng-model="newActivity.date">
+            <input class="mdl-textfield__input" type="date" id="date1" ng-required="true" ng-model="newActivity.date">
             <label class="mdl-textfield__label" for="date1"></label>
           </div>
-          
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" ng-controller="contactsLookupController">
-            <select class="mdl-textfield__input" id="contact" ng-model="newActivity.contactName">
-              <option ng-repeat="contact in contactList" value="{{contact.name}}">{{contact.name}}</option>
-           </select>            
-           <label class="mdl-textfield__label" for="contact">Contact</label>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <md-input-container ng-controller="contactsLookupController">
+            <md-select multiple ng-model="newActivity.contactName" name="contacts" placeholder="Contacts">
+              <md-option ng-repeat="contact in contactList | orderBy:'name' " value="{{contact.name}}">{{contact.name}}</md-option>
+            </md-select>
+          </md-input-container>
           </div>
                     
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="partner" ng-model="newActivity.partner">
-            <label class="mdl-textfield__label" for="partner">Partner</label>
+          <md-input-container ng-controller="partnersLookupController">
+            <md-select multiple ng-model="newActivity.partnerName" placeholder="Partners">
+              <md-option ng-repeat="partner in partnerList | orderBy:'name' " value="{{partner.name}}">{{partner.name}}</md-option>
+            </md-select>
+          </md-input-container>
           </div>
+            <!--<select class="mdl-textfield__input" id="partner" ng-model="newActivity.partnerName">
+              <option ng-repeat="partner in partnerList" value="{{partner.name}}">{{partner.name}}</option>
+            </select>
+            <label class="mdl-textfield__label" for="partner">Partner</label>
+          </div>-->
           
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <textarea class="mdl-textfield__input" id="notes" ng-model="newActivity.notes"></textarea>
@@ -118,12 +142,17 @@
             <select class="mdl-textfield__input" id="type" ng-model="newActivity.type">
               <option value="phone">Phone call</option>
               <option value="message">Left message</option>
-              <option value="store">Meal</option>
+              <option value="restaurant">Dining</option>
+              <option value="local_cafe">Cafe</option>
+              <option value="local_activity">Entertainment</option>
+              <option value="people">Meeting</option>
+              <option value="group_work">Working meeting</option>
+              <option value="mail">Email / Mail</option>
             </select>
             <label class="mdl-textfield__label" for="type">Type</label>
           </div>
           
-          <input ng-click="addA()" type="submit" value="Submit" style="width:100px; height:40px;" class="mui-btn mui-btn--raised">
+          <button ng-click="addA()" class="mui-btn mui-btn--small mui-btn--raised mui-btn--primary">Submit</button>
           <a href="#" id="formCancel" class="activityMeta" style="float:right; margin:15px 6px 0 0;" ng-click="cancel()">Cancel</a>
         </div>
         </form>
@@ -131,62 +160,40 @@
       <div id="activities" class="section">
         <h2>All Activities</h2>
         <div class="aContainer">
-          <div ng-repeat="activity in activities | orderBy:'-$id' | filter:search" class="card paper-shadow-top-z-1">
+          <div ng-repeat="activity in activities | orderBy:'-date' | filter:search" class="card paper-shadow-top-z-1">
               <i style="float:right;" class="material-icons">{{activity.type}}</i>
               <div class="activityMeta" style="clear:right; float:right;">
                  <a href="#" ng-click="activities.$remove(activity)">Delete</a>
               </div>
             <div class="activityDescription">{{activity.notes}}</div>
-            <div class="activityMeta">{{activity.date | date:'shortDate'}} - {{activity.partner}} with {{activity.contact}}</div>
-          </div>
-        </div>
-      </div>
-      <div id="byPartner" class="section" style="display:none;"> 
-        <h2>Activities by Partner</h2>
-        <div class="aContainer">
-          <div ng-repeat="activity in activities | orderBy:'partner'" class="card paper-shadow-top-z-1">
-              <i style="float:right;" class="material-icons">{{activity.type}}</i>
-              <div class="activityMeta" style="clear:right; float:right;">
-                 <a href="#" ng-click="activities.$remove(activity)">Delete</a>
-              </div>
-            <div class="activityDescription">{{activity.notes}}</div>
-            <div class="activityMeta">{{activity.date}} - {{activity.partner}} with {{activity.contact}}</div>
-          </div>
-        </div>
-      </div>
-      <div id="byGroup" class="section" style="display:none;"> 
-        <h2>Activities by Group</h2>
-        <div class="aContainer">
-          <div ng-repeat="activity in activities | orderBy:'contact'" class="card paper-shadow-top-z-1">
-              <i style="float:right;" class="material-icons">{{activity.type}}</i>
-              <div class="activityMeta" style="clear:right; float:right;">
-                 <a href="#" ng-click="activities.$remove(activity)">Delete</a>
-              </div>
-            <div class="activityDescription">{{activity.notes}}</div>
-            <div class="activityMeta">{{activity.date}} - {{activity.partner}} with {{activity.contact}}</div>
-          </div>
-        </div>
-      </div>
-      <div id="byContact" class="section" style="display:none;"> 
-        <h2>Activities by Contact</h2>
-        <div class="aContainer">
-          <div ng-repeat="activity in activities | orderBy:'contact'" class="card paper-shadow-top-z-1">
-              <i style="float:right;" class="material-icons">{{activity.type}}</i>
-              <div class="activityMeta" style="clear:right; float:right;">
-                 <a href="#" ng-click="activities.$remove(activity)">Delete</a>
-              </div>
-            <div class="activityDescription">{{activity.notes}}</div>
-            <div class="activityMeta">{{activity.date}} - {{activity.partner}} with {{activity.contact}}</div>
+            <div class="activityMeta">
+              <span><b>{{activity.date | date:'shortDate'}}</b></span>&nbsp;&nbsp;
+              <span ng-repeat="a in activity.partner"> {{a}}&nbsp;&nbsp; </span> |&nbsp;&nbsp; 
+              <span ng-repeat="a in activity.contact"> {{a}}&nbsp;&nbsp; </span>
+            </div>
           </div>
         </div>
       </div>
       <div id="contacts" ng-controller="contactsController" class="section" style="display:none;">
         <h2>Contacts</h2>
         <div class="aContainer">
-          <div ng-repeat="contact in contacts track by $index" class="card paper-shadow-top-z-1">
+          <div ng-repeat="contact in contacts | orderBy:'name' | filter:search" class="card paper-shadow-top-z-1">
+            
+            <i style="float:left; margin:3px 9px 3px 3px;" class="material-icons mdl-list__item-avatar">person</i>
             <div class="contactGroup">{{contact.group}}</div>
             <div class="activityDescription">{{contact.name}} ({{contact.title}})</div>
             <div class="activityMeta">{{contact.phone}}</div>
+          </div>
+        </div>
+      </div>
+      <div id="partners" ng-controller="partnersController" class="section" style="display:none;">
+        <h2>Partners</h2>
+        <div class="aContainer">
+          <div ng-repeat="partner in partners | orderBy:'name' | filter:search" class="card paper-shadow-top-z-1">
+            <i style="float:left; margin:3px 9px 3px 3px;" class="material-icons mdl-list__item-avatar">person</i>
+            <div class="contactGroup">{{partner.group}}</div>
+            <div class="activityDescription">{{partner.name}} ({{partner.title}})</div>
+            <div class="activityMeta">{{partner.phone}}</div>
           </div>
         </div>
       </div>
